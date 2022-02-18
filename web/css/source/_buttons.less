@@ -1,0 +1,44 @@
+//@js-button-color: #0317fc;
+@js-button-color: #1cfc03;
+
+& when (@media-common = true) {
+
+    button {
+        background: @js-button-color !important;
+    }
+
+    //  Using buttons mixins
+    button,
+    a.action.primary {
+        //background: #0317fc !important;
+        .lib-css(border-radius, @button__border-radius);
+    }
+
+    button {
+        &:not(.primary) {
+            .lib-css(box-shadow, @button__shadow);
+
+            &:active {
+                .lib-css(box-shadow, @button__shadow-active);
+            }
+        }
+    }
+
+    body {
+        &:not(._keyfocus) {
+            button {
+                &:focus {
+                    box-shadow: none;
+                }
+            }
+        }
+    }
+
+    a.action.primary {
+        .lib-link-as-button();
+    }
+
+    .action.primary {
+        .lib-button-primary();
+    }
+}
